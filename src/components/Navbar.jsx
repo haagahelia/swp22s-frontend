@@ -1,12 +1,26 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import {
+    AppBar,
+    Container,
+    Box,
+    Button
+} from "@mui/material"
 
 export default function Navbar() {
+    const navigate = useNavigate()
+
     return (
-        <nav>
-            <Link to="/">Home</Link>
-            <Link to="/unsigned">Unsigned Orders</Link>
-            <Link to="/signatures">Signatures</Link>
-        </nav>
+        <AppBar position="static" style={{ background: "white", height: 55 }}>
+            <Container maxWidth="xl">
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginTop: 1.2, justifyContent: "center" }}>
+                    <nav>
+                        <Button onClick={() => navigate("/")}>Home</Button>
+                        <Button onClick={() => navigate("/unsigned")}>Unsigned Orders</Button>
+                        <Button onClick={() => navigate("/signatures")}>Signatures</Button>
+                    </nav>
+                </Box>
+            </Container>
+        </AppBar>
     )
 }

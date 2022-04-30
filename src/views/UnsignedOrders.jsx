@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Typography } from "@mui/material"
 
 import Container from "../components/Container"
 import OrderTable from "../components/OrderTable/Table"
@@ -13,7 +14,7 @@ export default function UnsignedOrders({ orders, setOrder }) {
 
     return (
         <Container>
-            <h2>Unsigned Orders</h2>
+            <Typography variant="h5" fontWeight="bold" my={2} color="primary">Unsigned Orders</Typography>
             <OrderTable orders={unsigned} setOrder={setOrder} /> 
         </Container>
     )

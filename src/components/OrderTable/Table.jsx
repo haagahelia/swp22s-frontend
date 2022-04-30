@@ -31,7 +31,7 @@ export default function Table({ orders, setOrder, signed }) {
             width: 110,
         },
         {
-            headerName: 'Order Type',
+            headerName: 'Type',
             field: 'order_type',
             sortable: true,
             filter: 'agTextColumnFilter',

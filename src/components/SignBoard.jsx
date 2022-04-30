@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 import { base64ToBlob } from "../utils/helpers";
 import Axios from "../ajax/axios";
+import { Button } from "@mui/material";
 
 import SignaturePad from 'react-signature-canvas';
 
@@ -77,9 +78,9 @@ export default function SignBoard({ orders, setOrders, order }) {
             </div>
             <div>
                 <div className='buttonGroup'>
-                    <button onClick={clearSig}>Clear</button>
-                    <button onClick={saveSig}>Sign</button>
-                    <button onClick={lastSig}>Show last save</button>
+                    <Button onClick={clearSig}>Clear</Button>
+                    <Button onClick={saveSig}>Sign</Button>
+                    <Button onClick={lastSig}>Show last save</Button>
                 </div>
             </div>
         </>

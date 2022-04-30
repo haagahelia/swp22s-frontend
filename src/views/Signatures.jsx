@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Typography } from "@mui/material"
 
 import Container from "../components/Container"
 import Table from "../components/SignatureTable/Table"
@@ -13,7 +14,7 @@ export default function Signatures({ orders, setSignature }) {
 
     return (
         <Container>
-            <h2>Signatures</h2>
+            <Typography variant="h5" fontWeight="bold" my={2} color="primary">Signatures</Typography>
             <Table orders={signed} setSignature={setSignature} />
         </Container>
     )
