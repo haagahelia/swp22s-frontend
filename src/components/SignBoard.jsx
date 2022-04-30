@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 import { base64ToBlob } from "../utils/helpers";
-import Axios from "../services/axios";
+import Axios from "../ajax/axios";
 
 import SignaturePad from 'react-signature-canvas';
 
@@ -17,19 +17,9 @@ export default function SignBoard({ orders, setOrders, order }) {
     };
 
     const saveSig = async () => {
-        // const data = sigPad.current.toDataURL().split(',')[1];
-        // const type = sigPad.current.toDataURL().split(';')[0].slice(5, 14);
-        // const base64 = btoa(data);
-        // const decoded = atob(base64);
-
-        // setFirstSig(sigPad.current.toDataURL());
         setPrevSignature(sigPad.current.toDataURL()); //saving the PNG signature image as a base64 string
         sigPad.current.off();
 
-        // let fileBlob = Base64ToBlob(
-        //   decoded,
-        //   sigPad.current.toDataURL().split(';')[0].slice(5, 14)
-        // ); //Convert Base64 to blob
         const blob = await base64ToBlob(sigPad.current.toDataURL())
         const now = new Date()
         const selected = orders.find(x => x.uuid === order)
@@ -78,9 +68,6 @@ export default function SignBoard({ orders, setOrders, order }) {
             sigPad.current.fromDataURL(prevSignature);
         }
     };
-    // const showSignatures = () => {
-    //     setShowAllSig(!showAllSig);
-    // };
 
 
     return (
@@ -93,11 +80,6 @@ export default function SignBoard({ orders, setOrders, order }) {
                     <button onClick={clearSig}>Clear</button>
                     <button onClick={saveSig}>Sign</button>
                     <button onClick={lastSig}>Show last save</button>
-                    {/* {showAllSig === true ? (
-                        <button onClick={showSignatures}>Hide all signatures</button>
-                    ) : (
-                        <button onClick={showSignatures}>Show all signatures</button>
-                    )} */}
                 </div>
             </div>
         </>

@@ -6,6 +6,7 @@ export default function Toolbar(props) {
     const rowData = props.valueFormatted ? props.valueFormatted : props.value
 
     const deleteSignature = async () => {
+        console.log(rowData)
         if (window.confirm('Are you sure?')) {
             try {
                 await axios.delete(`http://195.148.22.114:8777/api/signatures/${rowData.id}`)
