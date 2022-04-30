@@ -13,14 +13,22 @@ export default function Toolbar(props) {
     }
 
     const showOrder = () => {
-        navigate(`order/${rowData.uuid}`)
+        navigate(`/order/${rowData.uuid}`)
         rowData.setOrder(rowData)
     }
 
     return (
         <div style={{ marginTop: 7 }}>
-            <VisibilityIcon style={{ marginRight: 18 }} onClick={showOrder} />
-            { !rowData.pu_signature_image && <BorderColorIcon onClick={signOrder}/> }
+            <VisibilityIcon 
+                style={{ marginRight: 18 }} 
+                onClick={showOrder} 
+                color="primary" 
+            />
+
+            { 
+                !rowData.pu_signature_image && 
+                <BorderColorIcon onClick={signOrder} color="warning" /> 
+            }
         </div>
     )
 }
