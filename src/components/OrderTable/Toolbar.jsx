@@ -1,5 +1,6 @@
 import React from "react"
 import BorderColorIcon from '@mui/icons-material/BorderColor';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useNavigate } from "react-router-dom"
 
 export default function Toolbar(props) {
@@ -11,9 +12,15 @@ export default function Toolbar(props) {
         rowData.setOrder(rowData.uuid)
     }
 
+    const showOrder = () => {
+        navigate(`order/${rowData.uuid}`)
+        rowData.setOrder(rowData)
+    }
+
     return (
         <div style={{ marginTop: 7 }}>
-            <BorderColorIcon onClick={signOrder}/>
+            <VisibilityIcon style={{ marginRight: 18 }} onClick={showOrder} />
+            { !rowData.pu_signature_image && <BorderColorIcon onClick={signOrder}/> }
         </div>
     )
 }

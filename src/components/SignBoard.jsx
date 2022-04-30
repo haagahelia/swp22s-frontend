@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 import { base64ToBlob } from "../utils/helpers";
-import Axios from "../services/axios";
+import Axios from "../ajax/axios";
 
 import SignaturePad from 'react-signature-canvas';
 

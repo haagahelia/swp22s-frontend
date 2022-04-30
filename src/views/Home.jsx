@@ -1,14 +1,13 @@
 import React from "react"
 
-import Navbar from "../components/Navbar"
+import Container from "../components/Container"
 import OrderTable from "../components/OrderTable/Table"
 
 export default function Home({ orders, setOrder }) {
     return (
-        <div className='container'>
-            <Navbar />
+        <Container>
             <h2>Orders</h2>
             <OrderTable orders={orders} setOrder={setOrder} /> 
-        </div>
+        </Container>
     )
 }

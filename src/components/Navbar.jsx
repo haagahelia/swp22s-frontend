@@ -5,6 +5,7 @@ export default function Navbar() {
     return (
         <nav>
             <Link to="/">Home</Link>
+            <Link to="/unsigned">Unsigned Orders</Link>
             <Link to="/signatures">Signatures</Link>
         </nav>
     )

@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import { useNavigate } from 'react-router-dom';
 
 import SignatureImg from './SignatureImg';
 import TimeStamps from './TimeStamps';
 // import Toolbar from './Toolbar';
 
-function Table({ orders, fetchOrders }) {
-  // const [sig, setSig] = useState([]);
-
-  // const handleClose = () => {
-  //   props.setOpen(false);
-  // };
+function Table({ orders, setSignature }) {
+  const navigate = useNavigate()
 
   const [components] = useState({
     'signatureImgComponent': SignatureImg
@@ -20,26 +17,12 @@ function Table({ orders, fetchOrders }) {
     return params.data;
   };
 
-  // const toolbarDataGetter = (params) => {
-    // params.data.setOpen = props.setOpen
-    // params.data.setMsg = props.setMsg
-    // params.data.sig = props.allSignatures
-    // params.data.setSig = props.setAllSignatures
-    // return params.data
-  // }
-
-  function dateComparator(date1, date2) {
-    if (date1.signed_at > date2.signed_at) {
-      return 1
-    } else {
-      return -1
-    }
-  }
-
   /**
    * When a user click on a row to display in a view the content 
    */
-  // function onRowClicked(e) {
+  function onRowClicked(e) {
+    setSignature(e.data)
+    navigate(e.data.uuid)
   //   try {
   //     if (e.data === undefined) {
   //       alert(
@@ -56,7 +39,7 @@ function Table({ orders, fetchOrders }) {
   //     )
   //   }
 
-  // }
+  }
 
   const columns = [
     {
@@ -81,15 +64,12 @@ function Table({ orders, fetchOrders }) {
       cellRenderer: TimeStamps,
       sortable: true,
       width: 140,
-      comparator: dateComparator,
       filter: 'agDateColumnFilter',
       filterParams: {
         // provide comparator function
         //https://www.ag-grid.com/react-data-grid/filter-date/
         comparator: (filterLocalDateAtMidnight, cellValue) => {
-
           const dateAsString = cellValue.pu_signed_at;
-          console.log(dateAsString);
 
           if (dateAsString == null) {
             return 0;
@@ -106,14 +86,20 @@ function Table({ orders, fetchOrders }) {
           return 0;
         }
       }
-    }
+    },
+    // {
+    //   headerName: "",
+    //   valueGetter: rowDataGetter,
+    //   cellRenderer: Toolbar,
+    //   width: 70,
+    // }
   ];
 
   return (
     <div className="ag-theme-alpine" style={{ height: 450, width: 600 }}>
       <AgGridReact
         rowData={orders}
-        // onRowClicked={(e) => onRowClicked(e)}
+        onRowClicked={(e) => onRowClicked(e)}
         components={components}
         columnDefs={columns}
         pagination={true}
