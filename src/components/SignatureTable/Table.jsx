@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import SignatureImg from './SignatureImg';
 import TimeStamps from './TimeStamps';
-// import Toolbar from './Toolbar';
 
 function Table({ orders, setSignature }) {
   const navigate = useNavigate()
@@ -23,22 +22,6 @@ function Table({ orders, setSignature }) {
   function onRowClicked(e) {
     setSignature(e.data)
     navigate(e.data.uuid)
-  //   try {
-  //     if (e.data === undefined) {
-  //       alert(
-  //         'Could not open the signature'
-  //       )
-  //     } else {
-  //       props.setShowOneSig(e.data)
-  //     }
-
-  //   } catch (error) {
-  //     console.log(error)
-  //     alert(
-  //       'Could not open the signature: ', error
-  //     )
-  //   }
-
   }
 
   const columns = [
@@ -86,13 +69,7 @@ function Table({ orders, setSignature }) {
           return 0;
         }
       }
-    },
-    // {
-    //   headerName: "",
-    //   valueGetter: rowDataGetter,
-    //   cellRenderer: Toolbar,
-    //   width: 70,
-    // }
+    }
   ];
 
   return (
