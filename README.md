@@ -15,6 +15,8 @@ people are turning back to npm?)
 
 The *real IP address* and the *TCP port of the backend* (if using the running backend in cloud) are found in Teams > DevOps, Linux > Files > .xlsx
 
+4. npm start
+
 ## Available Scripts
 
 In the project directory, you can run:
