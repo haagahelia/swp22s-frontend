@@ -1,6 +1,19 @@
-# Getting Started with Create React App
+# Frontend project 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+(This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)
+
+Note: Please do not use yarn for this project. When everybody uses npm
+it's easier. (To my knowledge yarn also did not surpass npm in popularity and
+people are turning back to npm?)
+
+## Installation steps
+0. (If you have an old installation, remove it, or remove at least node_modules and package-lock.json/yarn.lock etc.)
+1. git clone / git pull
+1. npm install
+1. create an '.env.local' file to the root of the project folder. In the file add just one line: (replace the two placeholders with real data)
+> REACT_APP_BE_SERVER_BASE_URL=http://real_ip_for_backend_here:backend_port_here/api
+
+The *real IP address* and the *TCP port of the backend* (if using the running backend in cloud) are found in Teams > DevOps, Linux > Files > .xlsx
 
 ## Available Scripts
 
