@@ -29,7 +29,7 @@ export default function Order({ order, setOrder }) {
                     <p>Pick-up Address: {order.pu_address}</p>
                     <p>Planned Pick-up Time: {moment(order.pu_planned_time).format("DD-MM-YYYY HH:mm")}</p>
                     {
-                        order?.pu_signed_at && <p>Signed At: {moment(order.pu_signed_at).format("DD-MM-YYYY HH:mm")}</p>
+                        order?.pu_signed_at ? <p>Signed At: {moment(order.pu_signed_at).format("DD-MM-YYYY HH:mm")}</p> : null
                     }
                 </CardContent>
 

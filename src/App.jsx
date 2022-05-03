@@ -8,15 +8,15 @@ import {
 import './App.css';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import Axios from './ajax/axios';
+import dao from './ajax/dao';
 
 import Home from './views/Home';
 import UnsignedOrders from './views/UnsignedOrders';
 import Sign from './views/Sign';
 import Signatures from './views/Signatures';
-import Signature from './components/Signature';
-import Popup from './components/Popup';
-import Order from './components/Order';
+import Signature from './views/Signature';
+import Popup from './components/CommonComponents/Popup';
+import Order from './views/Order';
 
 function App() {
   const [ orders, setOrders ] = useState([])
@@ -32,10 +32,12 @@ function App() {
   // Fetching all tasks
   const fetchOrders = async () => {
     try {
-      const data = await Axios.getOrders()
+      const data = await dao.getOrders();
+      console.log("Data: " + data);
       const dataWithId = data.map((d, i) => {
           return { ...d, id: i }
       })
+
       setOrders(dataWithId)
       setIsOpen(true)
       setMsg("Successfully fetched orders")

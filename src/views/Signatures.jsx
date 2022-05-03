@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Typography } from "@mui/material"
 
-import Container from "../components/Container"
+import Container from "../components/CommonComponents/Container"
 import Table from "../components/SignatureTable/Table"
 
 export default function Signatures({ orders, setSignature }) {
