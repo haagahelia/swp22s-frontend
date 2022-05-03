@@ -7,8 +7,11 @@ import {
     CardContent
 } from "@mui/material"
 
-export default function Signature ({ signature }) {
+import { useSignature } from "../contexts/SignatureContext"
+
+export default function SignatureView() {
     const navigate = useNavigate()
+    const { signature } = useSignature()
     
     return (
         <div className="signature">

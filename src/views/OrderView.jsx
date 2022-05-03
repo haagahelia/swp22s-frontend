@@ -9,8 +9,11 @@ import {
     CardActions
 } from '@mui/material';
 
-export default function Order({ order, setOrder }) {
+import { useOrder } from '../contexts/OrderContext';
+
+export default function OrderView() {
     const navigate = useNavigate()
+    const { order, setOrder } = useOrder()
 
     const signOrder = () => {
         navigate(`/sign/${order.uuid}`)
