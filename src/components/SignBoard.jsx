@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 import { base64ToBlob } from "../utils/helpers";
-import Axios from "../ajax/axios";
+import dao from "../ajax/dao";
 import { Button } from "@mui/material";
 
 import SignaturePad from 'react-signature-canvas';
@@ -43,7 +43,7 @@ export default function SignBoard({ orders, setOrders, order }) {
         formData.append('signature', signatureBlob);
         console.log(formData.get('signature'));
         try {
-            const res = await Axios.signOrder(params.orderId, formData)
+            const res = await dao.signOrder(params.orderId, formData)
             console.log(res.data);
 
             if (res.status === 201) {
