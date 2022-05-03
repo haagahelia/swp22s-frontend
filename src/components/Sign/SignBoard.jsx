@@ -77,7 +77,7 @@ export default function SignBoard({ orders, setOrders, order }) {
                 <SignaturePad ref={sigPad} canvasProps={{ className: 'sigPad' }} />
             </div>
             <div>
-                <div className='buttonGroup'>
+                <div className="buttonGroup">
                     <Button onClick={clearSig}>Clear</Button>
                     <Button onClick={saveSig}>Sign</Button>
                     <Button onClick={lastSig}>Show last save</Button>

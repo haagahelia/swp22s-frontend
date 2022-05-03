@@ -4,6 +4,7 @@ export const base64ToBlob = async (base64) => {
     return blob
 }
 
+// This one is not in used
 export function Base64ToBlob(b64Data, contentType, sliceSize) {
     contentType = contentType || "";
     sliceSize = sliceSize || 512;
