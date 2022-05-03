@@ -1,21 +1,25 @@
 import React from "react"
 import { Snackbar } from '@mui/material';
 
+import { usePopup } from "../../contexts/PopupContext";
+
 export default function Popup({ isOpen, setIsOpen, msg }) {
+    const { content, setContent } = usePopup()
+
     const handleClose = (_, reason) => {
         if (reason === 'clickaway') {
             return;
         }
     
-        setIsOpen(false);
+        setContent({ isOpen: false, msg: "" });
     }
 
     return (
         <Snackbar
-            open={isOpen}
+            open={content.isOpen}
             autoHideDuration={5000}
             onClose={handleClose}
-            message={msg}
+            message={content.msg}
         />
     )
 }

@@ -7,6 +7,11 @@ const getOrders = async () => {
     return req.data;
 }
 
+const getUnsignedOrders = async () => {
+    const req = await axios.get(`${baseUrl}/report/notsigned`);
+    return req.data;
+}
+
 const signOrder = async (orderId, formData) => {
     const res = await axios.put(`${baseUrl}/signature/${orderId}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
     return res;
@@ -14,6 +19,7 @@ const signOrder = async (orderId, formData) => {
 
 const dao = {
     getOrders,
+    getUnsignedOrders,
     signOrder
 }
 

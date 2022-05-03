@@ -9,8 +9,11 @@ import {
     CardActions
 } from '@mui/material';
 
-export default function Order({ order, setOrder }) {
+import { useOrder } from '../contexts/OrderContext';
+
+export default function OrderView() {
     const navigate = useNavigate()
+    const { order, setOrder } = useOrder()
 
     const signOrder = () => {
         navigate(`/sign/${order.uuid}`)
@@ -21,7 +24,7 @@ export default function Order({ order, setOrder }) {
         <div className="order">
             <Button variant="outlined" onClick={() => navigate("/")}>Go Back</Button>
 
-            <Card sx={{ minWidth: 275, margin: "2rem 0" }}>
+            <Card className="card">
                 <CardContent>
                     <h3>{order.uuid}</h3>
                     <p>Country Code: {order.country_code}</p>
@@ -37,21 +40,12 @@ export default function Order({ order, setOrder }) {
                     {
                         !order?.pu_signed_at &&
                         <Button variant="outlined" size="small" onClick={signOrder}>
-                            <BorderColorIcon style={{ marginRight: 4, padding: "5 12" }} />
+                            <BorderColorIcon className="icon" />
                             Sign Order
                         </Button>
                     }
                 </CardActions>
             </Card>
-            
-            {/* {
-                !order?.pu_signed_at  
-                ? <button onClick={signOrder}>
-                    <BorderColorIcon style={{ marginRight: 4, padding: "5 12" }} />
-                    Sign Order
-                </button>
-                : <p>Signed At: {moment(order.pu_signed_at).format("DD-MM-YYYY HH:mm")}</p>
-            } */}
         </div>
     )
 }

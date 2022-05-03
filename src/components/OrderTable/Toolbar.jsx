@@ -18,9 +18,8 @@ export default function Toolbar(props) {
     }
 
     return (
-        <div style={{ marginTop: 7 }}>
+        <div className="order-table-toolbar">
             <VisibilityIcon 
-                style={{ marginRight: 18 }} 
                 onClick={showOrder} 
                 color="primary" 
             />

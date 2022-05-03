@@ -7,13 +7,16 @@ import {
     CardContent
 } from "@mui/material"
 
-export default function Signature ({ signature }) {
+import { useSignature } from "../contexts/SignatureContext"
+
+export default function SignatureView() {
     const navigate = useNavigate()
+    const { signature } = useSignature()
     
     return (
         <div className="signature">
             <Button variant="outlined" onClick={() => navigate("/signatures")}>Go Back</Button>
-            <Card sx={{ minWidth: 275, margin: "2rem 0"}}>
+            <Card className="card">
                 {
                     signature.pu_signature_image &&
                     <img src={`data:image/png;base64,${signature.pu_signature_image}`} alt="Signature" />

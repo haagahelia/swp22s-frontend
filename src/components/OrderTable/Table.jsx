@@ -5,7 +5,7 @@ import Toolbar from "./Toolbar"
 import PickupTimeStamp from "./PickupTimestamp";
 import SignedAtTimeStamp from "./SignedAtTimestamp";
 
-export default function Table({ orders, setOrder, signed }) {
+export default function Table({ orders, setOrder }) {
     const toolbarDataGetter = (params) => {
         params.data.setOrder = setOrder
         return params.data
