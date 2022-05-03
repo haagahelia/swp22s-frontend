@@ -1,9 +1,6 @@
 import axios from 'axios';
-import dotenv from 'dotenv';
 
-dotenv.config({});
-
-const baseUrl = process.env.BE_SERVER_BASE_URL;
+const baseUrl = process.env.REACT_APP_BE_SERVER_BASE_URL;
 
 const getOrders = async () => {
     const req = await axios.get(`${baseUrl}/report`);

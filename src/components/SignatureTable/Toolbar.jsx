@@ -1,10 +1,8 @@
 import React from "react"
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
-import dotenv from 'dotenv';
 
-dotenv.config({});
-const baseUrl = process.env.BE_SERVER_BASE_URL;
+const baseUrl = process.env.REACT_APP_BE_SERVER_BASE_URL;
 
 export default function Toolbar(props) {
     const rowData = props.valueFormatted ? props.valueFormatted : props.value
