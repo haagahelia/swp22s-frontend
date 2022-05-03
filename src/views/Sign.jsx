@@ -1,7 +1,7 @@
 import React from "react"
 
-import Container from "../components/Container"
-import SignBoard from "../components/SignBoard"
+import Container from "../components/CommonComponents/Container"
+import SignBoard from "../components/Sign/SignBoard"
 
 export default function Sign({ orders, setOrders, order }) {
     return (

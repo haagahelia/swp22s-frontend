@@ -1,7 +1,7 @@
 import React from "react"
 import { Typography } from "@mui/material"
 
-import Container from "../components/Container"
+import Container from "../components/CommonComponents/Container"
 import OrderTable from "../components/OrderTable/Table"
 
 export default function Home({ orders, setOrder }) {

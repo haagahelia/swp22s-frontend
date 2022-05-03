@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
-import { base64ToBlob } from "../utils/helpers";
-import dao from "../ajax/dao";
+import { base64ToBlob } from "../../utils/helpers";
+import dao from "../../ajax/dao";
 import { Button } from "@mui/material";
 
 import SignaturePad from 'react-signature-canvas';
