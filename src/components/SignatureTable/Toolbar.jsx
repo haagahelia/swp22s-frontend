@@ -1,6 +1,10 @@
 import React from "react"
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
+import dotenv from 'dotenv';
+
+dotenv.config({});
+const baseUrl = process.env.BE_SERVER_BASE_URL;
 
 export default function Toolbar(props) {
     const rowData = props.valueFormatted ? props.valueFormatted : props.value
@@ -8,8 +12,8 @@ export default function Toolbar(props) {
     const deleteSignature = async () => {
         console.log(rowData)
         if (window.confirm('Are you sure?')) {
-            try {
-                await axios.delete(`http://195.148.22.114:8777/api/signatures/${rowData.id}`)
+            try {      // TODO: Should the delete happen via dao.js ???
+                await axios.delete(`${baseUrl}/signatures/${rowData.id}`)
                 props.data.setSig(props.data.sig.filter(x => x.id !== rowData.id))
                 props.data.setOpen(true)
                 props.data.setMsg("Successfully deleted signature")

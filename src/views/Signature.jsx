@@ -7,7 +7,7 @@ import {
     CardContent
 } from "@mui/material"
 
-export default function Signature({ signature }) {
+export default function Signature ({ signature }) {
     const navigate = useNavigate()
     
     return (

@@ -14,9 +14,9 @@ import Home from './views/Home';
 import UnsignedOrders from './views/UnsignedOrders';
 import Sign from './views/Sign';
 import Signatures from './views/Signatures';
-import Signature from './components/Signature';
-import Popup from './components/Popup';
-import Order from './components/Order';
+import Signature from './views/Signature';
+import Popup from './components/CommonComponents/Popup';
+import Order from './views/Order';
 
 function App() {
   const [ orders, setOrders ] = useState([])
