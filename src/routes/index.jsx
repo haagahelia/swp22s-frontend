@@ -11,6 +11,7 @@ import UnsignedOrdersView from "../views/UnsignedOrdersView"
 import SignaturesView from '../views/SignaturesView'
 import SignatureView from '../views/SignatureView'
 import SignView from '../views/SignView'
+import CreateNewOrder from '../views/CreateNewOrder'
 
 export default function AppRoutes() {
     return (
@@ -22,6 +23,7 @@ export default function AppRoutes() {
                 <Route path="/signatures" element={<SignaturesView />} />
                 <Route path="/signatures/:id" element={<SignatureView />} />
                 <Route path="/sign/:orderId" element={<SignView />} />
+                <Route path="/new" element={<CreateNewOrder />} />
             </Routes>
         </Router>
     )

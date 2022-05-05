@@ -7,6 +7,16 @@ const getOrders = async () => {
     return req.data;
 }
 
+const getCountry = async () => {
+    const req = await axios.get(`${baseUrl}/country`);
+    return req.data;
+}
+
+const getTypeOrder = async () => {
+    const req = await axios.get(`${baseUrl}/type`);
+    return req.data;
+}
+
 const getUnsignedOrders = async () => {
     const req = await axios.get(`${baseUrl}/report/notsigned`);
     return req.data;
@@ -20,7 +30,9 @@ const signOrder = async (orderId, formData) => {
 const dao = {
     getOrders,
     getUnsignedOrders,
-    signOrder
+    signOrder,
+    getCountry,
+    getTypeOrder
 }
 
 export default dao;      
