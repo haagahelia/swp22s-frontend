@@ -22,7 +22,7 @@ export default function CreateNewOrder() {
     const fetchCountries = async () => {
         try {
             const data = await dao.getCountry();
-            console.log("Data: " + data);
+            // console.log("Data: " + data);
 
             setCountries(data)
             setContent({ isOpen: true, msg: "Successfully fetched orders" })
@@ -35,7 +35,7 @@ export default function CreateNewOrder() {
     const fetchOrderType = async () => {
         try {
             const data = await dao.getTypeOrder();
-            console.log("Data: " + data);
+            //  console.log("Data: " + data);
 
             setTypes(data)
             setContent({ isOpen: true, msg: "Successfully fetched types" })
@@ -56,6 +56,8 @@ export default function CreateNewOrder() {
         //navigate("/")
     }
 
+
+
     return (
         <div className="order">
             <Button variant="outlined" onClick={() => navigate("/")}>Cancel</Button>
@@ -65,13 +67,20 @@ export default function CreateNewOrder() {
                     <FormLabel>Address</FormLabel>
                     <TextField margin="dense" fullWidth />
                     <FormLabel>Order type</FormLabel>
-                    <Select margin="dense" fullWidth label="Type">
-                        {types.map(x => <MenuItem value={x.order_type}>{x.order_type}</MenuItem>)}
-                    </Select>
+                    {
+                        types.length > 0 &&
+                        <Select defaultValue={types[0].order_type} margin="dense" fullWidth label="Type">
+                            {types.map(x => <MenuItem key={x.order_type} value={x.order_type}>{x.order_type}</MenuItem>)}
+                        </Select>
+                    }
+
                     <FormLabel>Country</FormLabel>
-                    <Select margin="dense" fullWidth label="Country">
-                        {countries.map(x => <MenuItem value={x.id}>{x.name}</MenuItem>)}
-                    </Select>
+                    {
+                        countries.length > 0 &&
+                        <Select defaultValue={countries[0].id} margin="dense" fullWidth label="Country">
+                            {countries.map(x => <MenuItem key={x.id} value={x.id}>{x.name}</MenuItem>)}
+                        </Select>
+                    }
                     <FormLabel>Date of pick up</FormLabel>
                     <TextField margin="dense" fullWidth type="datetime-local" />
                 </CardContent>
