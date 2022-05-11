@@ -25,3 +25,14 @@ export function Base64ToBlob(b64Data, contentType, sliceSize) {
     const blob = new Blob(byteArrays, { type: contentType });
     return blob;
 }
+
+//returns TRUE if the timelimit for pickup is exceeded
+export function CheckTimelimit(order) {
+    console.log(`order: ${JSON.stringify(order)}`)
+    let timelimitMilliSecs = 3 * 60 * 60 * 1000
+    if ((Date.now() - Date.parse(order.pu_planned_time)) > timelimitMilliSecs) {
+        return true
+    } else {
+        return false
+    }
+}
