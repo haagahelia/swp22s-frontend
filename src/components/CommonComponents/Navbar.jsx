@@ -17,6 +17,7 @@ export default function Navbar() {
                     <nav>
                         <Button onClick={() => navigate("/")}>Home</Button>
                         <Button onClick={() => navigate("/unsigned")}>Unsigned Orders</Button>
+                        <Button onClick={() => navigate("/unsignedtimelimit")}>Timed out Orders</Button>
                         <Button onClick={() => navigate("/signatures")}>Signatures</Button>
                         <Button onClick={() => navigate("/new")}>Create a new order</Button>
                     </nav>
