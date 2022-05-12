@@ -26,7 +26,7 @@ export default function UnsignedOrdersView() {
             })
 
             setUnsigned(dataWithId)
-            setContent({ isOpen: true, msg: "Successfully fetched unsigned orders" })
+            // setContent({ isOpen: true, msg: "Successfully fetched unsigned orders" })
         } catch (error) {
             console.log(error);
             setContent({ isOpen: true, msg: `Can't fetch unsigned orders, ${error}` })

@@ -51,6 +51,11 @@ code {
   padding: 1rem 0;
 }
 
+.order {
+  width: 50%;
+  margin: auto;
+}
+
 .signature img {
   width: 400px;
   box-shadow: 0px 8px 20px -8px rgba(0, 0, 0, 0.3);

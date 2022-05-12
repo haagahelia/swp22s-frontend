@@ -28,7 +28,7 @@ export default function OrdersView() {
             })
 
             setOrders(dataWithId)
-            setContent({ isOpen: true, msg: "Successfully fetched orders" })
+            // setContent({ isOpen: true, msg: "Successfully fetched orders" })
         } catch (error) {
             console.log(error);
             setContent({ isOpen: true, msg: `Can't fetch orders, ${error}` })
