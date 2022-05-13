@@ -37,3 +37,17 @@ export function CheckTimelimit(order) {
         return false
     }
 }
+
+export const generateUUID = () => {
+    const str = "abcdefghijklmnopqrstuvwxyz0123456789"
+    const strArr = str.split("")
+    const arr = []
+
+    const getRandomIndex = (arr) => Math.floor(Math.random() * arr.length)
+
+    for (let i = 0; i < 24; i++) {
+        const index = getRandomIndex(strArr)
+        arr.push(strArr[index])
+    }
+    return arr.join("")
+}
