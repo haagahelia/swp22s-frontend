@@ -34,15 +34,21 @@ const saveOrder = async (order) => {
   return res;
 };
 
-const dao = {
-  getOrders,
-  getUnsignedOrders,
-  signOrder,
-  getCountry,
-  getTypeOrder,
-  saveOrder,
-};
+const deleteOrder = async (orderId) => {
+    const res = await axios.delete(`${baseUrl}/task/${orderId}`);
+    return res;
+}
 
-export default dao;
-// DAO stands for "data access object", our way to the business data model,
+const dao = {
+    getOrders,
+    getUnsignedOrders,
+    signOrder,
+    getCountry,
+    getTypeOrder,
+    saveOrder,
+    deleteOrder,
+}
+
+export default dao;      
+// DAO stands for "data access object", our way to the business data model, 
 // this time via ajax to the backend
