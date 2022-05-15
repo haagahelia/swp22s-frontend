@@ -27,12 +27,18 @@ const signOrder = async (orderId, formData) => {
     return res;
 }
 
+const deleteOrder = async (orderId) => {
+    const res = await axios.delete(`${baseUrl}/task/${orderId}`);
+    return res;
+}
+
 const dao = {
     getOrders,
     getUnsignedOrders,
     signOrder,
     getCountry,
-    getTypeOrder
+    getTypeOrder,
+    deleteOrder,
 }
 
 export default dao;      

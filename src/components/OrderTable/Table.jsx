@@ -1,7 +1,7 @@
 import React from "react"
 import { AgGridReact } from 'ag-grid-react';
-
 import Toolbar from "./Toolbar"
+import Delete from "./Delete"
 import PickupTimeStamp from "./PickupTimestamp";
 import SignedAtTimeStamp from "./SignedAtTimestamp";
 
@@ -84,9 +84,15 @@ export default function Table({ orders, setOrder }) {
         },
         {
             headerName: '',
-            width: 90,
+            width: 70,
             cellRenderer: Toolbar,
             valueGetter: toolbarDataGetter
+        },
+        {
+            headerName: '',
+            width: 60,
+            cellRenderer: Delete,
+            valueGetter: rowDataGetter
         }
     ]
 
