@@ -25,3 +25,29 @@ export function Base64ToBlob(b64Data, contentType, sliceSize) {
     const blob = new Blob(byteArrays, { type: contentType });
     return blob;
 }
+
+//returns TRUE if the timelimit for pickup is exceeded
+export function CheckTimelimit(order) {
+    const timeLimit = process.env.REACT_APP_TIME_LIMIT
+    console.log(`order: ${JSON.stringify(order)}`)
+    let timelimitMilliSecs = Number(timeLimit) * 60 * 60 * 1000
+    if ((Date.now() - Date.parse(order.pu_planned_time)) > timelimitMilliSecs) {
+        return true
+    } else {
+        return false
+    }
+}
+
+export const generateUUID = () => {
+    const str = "abcdefghijklmnopqrstuvwxyz0123456789"
+    const strArr = str.split("")
+    const arr = []
+
+    const getRandomIndex = (arr) => Math.floor(Math.random() * arr.length)
+
+    for (let i = 0; i < 24; i++) {
+        const index = getRandomIndex(strArr)
+        arr.push(strArr[index])
+    }
+    return arr.join("")
+}
