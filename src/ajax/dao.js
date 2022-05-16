@@ -41,6 +41,11 @@ const saveOrder = async (order) => {
   return res;
 };
 
+const deleteOrder = async (orderId) => {
+   const res = await axios.delete(`${baseUrl}/task/${orderId}`);
+   return res;
+};
+
 
 const dao = {
   getOrders,
@@ -51,7 +56,8 @@ const dao = {
   getStatsByOrderType,
 
   signOrder,
-  saveOrder,  
+  saveOrder,
+  deleteOrder,
 };
 
 export default dao;
