@@ -1,22 +1,34 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Typography } from "@mui/material"
 import dao from "../ajax/dao"
+// import {logger} from "../utils/logger"
 
 import { usePopup } from "../contexts/PopupContext"
 import { useOrders } from "../contexts/OrdersContext"
 import { useOrder } from "../contexts/OrderContext"
 import Container from "../components/CommonComponents/Container"
 import OrderTable from "../components/OrderTable/Table"
+//import { elementAcceptingRef } from "@mui/utils"
 
 export default function OrdersView() {
     const { orders, setOrders } = useOrders()
+    const { stats, setStats } = useState([])
     const { setOrder } = useOrder()
     const { setContent } = usePopup()
 
+    const statsTest = [{order_type:"driving"},{order_type:"cafeteria"}];
+    
     useEffect(() => {
-        fetchOrders()
+        fetchOrders();
+        fetchStatistics();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    /*
+    useEffect(() => {
+        fetchStatistics();
+    }, [orders, stats, fetchStatistics])
+    */
 
     // Fetching all tasks
     const fetchOrders = async () => {
@@ -35,10 +47,30 @@ export default function OrdersView() {
         }
     };
 
+    const fetchStatistics = async () => {
+        try {
+            const statsList = await dao.getStatsByOrderType();
+            console.log("Stats:");
+            console.dir(statsList);
+            setStats(statsList);
+        } catch (error) {
+            // console.error(`Error while trying to output stats`);
+        }
+    }
+
     return (
         <Container>
             <Typography variant="h5" fontWeight="bold" my={2} color="primary">Orders</Typography>
             <OrderTable orders={orders} setOrder={setOrder} /> 
-        </Container>
+
+            {/*
+            <ul>
+                {stats.forEach(element => 
+                    <li key={element.order_type}>{element.order_type}</li>    
+                )}
+            </ul>
+            */}
+                        
+        </Container>        
     )
 }
