@@ -15,7 +15,7 @@ export default function Delete(props) {
     const rowData = props.valueFormatted ? props.valueFormatted : props.value
 
     const deleteRow = async () => {
-      
+
             try {
                 await dao.deleteOrder(`${rowData.uuid}`);
                 setContent({ isOpen: true, msg: `Order has been deleted!` });
@@ -56,7 +56,7 @@ export default function Delete(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          {rowData.uuid} {rowData.pu_address}
+          {rowData.pu_address}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
