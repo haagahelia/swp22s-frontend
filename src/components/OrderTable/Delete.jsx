@@ -1,10 +1,11 @@
-import React from "react"
+import React from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Button from '@mui/material/Button';
 import dao from "../../ajax/dao";
 import { usePopup } from "../../contexts/PopupContext";
 
 export default function Delete(props) {
+
     const { setContent } = usePopup();
     const rowData = props.valueFormatted ? props.valueFormatted : props.value
 
@@ -17,7 +18,6 @@ export default function Delete(props) {
                 setContent({ isOpen: true, msg: `Can't delete the order, ${error}` });
             }
         }
-        
     }
 
     return (
