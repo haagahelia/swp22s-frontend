@@ -18,7 +18,7 @@ export default function Table({ orders, setOrder }) {
     const columns = [
         {
             headerName: '',
-            width: 60,
+            width: 65,
             cellRenderer: Delete,
             valueGetter: rowDataGetter
         },
