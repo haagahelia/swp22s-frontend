@@ -22,6 +22,13 @@ const getUnsignedOrders = async () => {
   return req.data;
 };
 
+const getStatsByOrderType = async () => {
+  const req = await axios.get(`${baseUrl}/report/by_order_type`);
+  return req.data;
+};
+
+
+
 const signOrder = async (orderId, formData) => {
   const res = await axios.put(`${baseUrl}/signature/${orderId}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
@@ -35,20 +42,24 @@ const saveOrder = async (order) => {
 };
 
 const deleteOrder = async (orderId) => {
-    const res = await axios.delete(`${baseUrl}/task/${orderId}`);
-    return res;
-}
+   const res = await axios.delete(`${baseUrl}/task/${orderId}`);
+   return res;
+};
+
 
 const dao = {
-    getOrders,
-    getUnsignedOrders,
-    signOrder,
-    getCountry,
-    getTypeOrder,
-    saveOrder,
-    deleteOrder,
-}
+  getOrders,
+  getCountry,
+  getTypeOrder,
 
-export default dao;      
-// DAO stands for "data access object", our way to the business data model, 
+  getUnsignedOrders,
+  getStatsByOrderType,
+
+  signOrder,
+  saveOrder,
+  deleteOrder,
+};
+
+export default dao;
+// DAO stands for "data access object", our way to the business data model,
 // this time via ajax to the backend
