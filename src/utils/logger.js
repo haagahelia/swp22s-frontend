@@ -12,4 +12,4 @@ const logConfiguration = {
     ]
 };
 
-export const logger = winston.createLogger(logConfiguration); 
+export const frogger = winston.createLogger(logConfiguration); 

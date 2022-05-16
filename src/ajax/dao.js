@@ -22,6 +22,13 @@ const getUnsignedOrders = async () => {
   return req.data;
 };
 
+const getStatsByOrderType = async () => {
+  const req = await axios.get(`${baseUrl}/report/by_order_type`);
+  return req.data;
+};
+
+
+
 const signOrder = async (orderId, formData) => {
   const res = await axios.put(`${baseUrl}/signature/${orderId}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
@@ -34,13 +41,17 @@ const saveOrder = async (order) => {
   return res;
 };
 
+
 const dao = {
   getOrders,
-  getUnsignedOrders,
-  signOrder,
   getCountry,
   getTypeOrder,
-  saveOrder,
+
+  getUnsignedOrders,
+  getStatsByOrderType,
+
+  signOrder,
+  saveOrder,  
 };
 
 export default dao;
