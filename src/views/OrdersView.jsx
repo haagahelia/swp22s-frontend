@@ -34,7 +34,7 @@ export default function OrdersView() {
     const fetchOrders = async () => {
         try {
             const data = await dao.getOrders();
-            console.log("Data: " + data);
+            // console.log("Data: " + data);
             const dataWithId = data.map((d, i) => {
                 return { ...d, id: i }
             })
@@ -61,7 +61,7 @@ export default function OrdersView() {
     return (
         <Container>
             <Typography variant="h5" fontWeight="bold" my={2} color="primary">Orders</Typography>
-            <OrderTable orders={orders} setOrder={setOrder} /> 
+            <OrderTable orders={orders} setOrders={setOrders} setOrder={setOrder} /> 
 
             {/*
             <ul>

@@ -1,11 +1,18 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { AgGridReact } from 'ag-grid-react';
 import Toolbar from "./Toolbar"
 import Delete from "./Delete"
 import PickupTimeStamp from "./PickupTimestamp";
 import SignedAtTimeStamp from "./SignedAtTimestamp";
 
-export default function Table({ orders, setOrder }) {
+export default function Table({ orders, setOrders, setOrder }) {
+    const [ rowData, setRowData ] = useState([])
+
+    useEffect(() => {
+        setRowData(orders)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setOrders])
+
     const toolbarDataGetter = (params) => {
         params.data.setOrder = setOrder
         return params.data
@@ -64,7 +71,7 @@ export default function Table({ orders, setOrder }) {
             valueGetter: rowDataGetter,
             cellRenderer: SignedAtTimeStamp,
             sortable: true,
-            width: 160,
+            width: 150,
             filter: 'agDateColumnFilter',
             filterParams: {
                 // provide comparator function
@@ -90,7 +97,7 @@ export default function Table({ orders, setOrder }) {
         },
         {
             headerName: '',
-            width: 70,
+            width: 90,
             cellRenderer: Toolbar,
             valueGetter: toolbarDataGetter
         },
@@ -102,7 +109,7 @@ export default function Table({ orders, setOrder }) {
     return (
         <div className="ag-theme-alpine" style={{ height: 450, width: 1080}}>
             <AgGridReact
-                rowData={orders}
+                rowData={rowData.length === 0 ? orders : rowData}
                 columnDefs={columns}
                 pagination={true}
                 paginationPageSize={10}
