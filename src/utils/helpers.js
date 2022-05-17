@@ -51,3 +51,16 @@ export const generateUUID = () => {
     }
     return arr.join("")
 }
+
+export const dateComparator = (row1, row2) => {
+    const date1 = new Date(row1.pu_planned_time)
+    const date2 = new Date(row2.pu_planned_time)
+
+    if (date1 === null && date2 === null) return 0
+
+    if (date1 === null) return -1
+
+    if (date2 === null) return 1
+
+    return date1 - date2
+}

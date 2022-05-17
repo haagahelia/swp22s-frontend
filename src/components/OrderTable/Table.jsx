@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { AgGridReact } from 'ag-grid-react';
+import { dateComparator } from "../../utils/helpers"
+
 import Toolbar from "./Toolbar"
 import Delete from "./Delete"
 import PickupTimeStamp from "./PickupTimestamp";
@@ -55,21 +57,23 @@ export default function Table({ orders, setOrders, setOrder }) {
             field: 'pu_address',
             sortable: true,
             filter: 'agTextColumnFilter',
-            width: 260,
+            width: 230,
         },
         {
             headerName: 'Planned Pick-up Time',
             field: 'pu_planned_time',
             valueGetter: rowDataGetter,
             cellRenderer: PickupTimeStamp,
+            comparator: dateComparator,
             sortable: true,
-            width: 150,
+            width: 170,
         },
         {
             headerName: 'Signed At',
             field: 'pu_signed_at',
             valueGetter: rowDataGetter,
             cellRenderer: SignedAtTimeStamp,
+            comparator: dateComparator,
             sortable: true,
             width: 150,
             filter: 'agDateColumnFilter',
