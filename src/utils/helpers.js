@@ -51,3 +51,14 @@ export const generateUUID = () => {
     }
     return arr.join("")
 }
+export function SearchByKeyword(array, keyword) {
+    if (keyword) {
+      const filteredArray = array.filter(function(item) {
+        return item.pu_address.toLowerCase().includes(keyword.toLowerCase())
+      })
+      return filteredArray
+    } else {
+      return array
+    }
+
+}
