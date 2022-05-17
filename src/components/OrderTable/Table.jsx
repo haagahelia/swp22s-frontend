@@ -17,6 +17,12 @@ export default function Table({ orders, setOrder }) {
 
     const columns = [
         {
+            headerName: '',
+            width: 65,
+            cellRenderer: Delete,
+            valueGetter: rowDataGetter
+        },
+        {
             headerName: 'UUID',
             field: 'uuid',
             sortable: true,
@@ -50,7 +56,7 @@ export default function Table({ orders, setOrder }) {
             valueGetter: rowDataGetter,
             cellRenderer: PickupTimeStamp,
             sortable: true,
-            width: 180,
+            width: 150,
         },
         {
             headerName: 'Signed At',
@@ -58,7 +64,7 @@ export default function Table({ orders, setOrder }) {
             valueGetter: rowDataGetter,
             cellRenderer: SignedAtTimeStamp,
             sortable: true,
-            width: 180,
+            width: 170,
             filter: 'agDateColumnFilter',
             filterParams: {
                 // provide comparator function
@@ -88,12 +94,7 @@ export default function Table({ orders, setOrder }) {
             cellRenderer: Toolbar,
             valueGetter: toolbarDataGetter
         },
-        {
-            headerName: '',
-            width: 60,
-            cellRenderer: Delete,
-            valueGetter: rowDataGetter
-        }
+
     ]
 
     if (!orders) return <p>No order to show</p>
