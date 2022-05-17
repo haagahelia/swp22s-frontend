@@ -28,6 +28,13 @@ export default function Delete(props) {
         
     }
 
+    const cantDelete = () => {
+
+          setContent({ isOpen: true, msg: `Can't delete signed order` });
+
+      
+  
+}
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -40,11 +47,22 @@ export default function Delete(props) {
 
   return (
     <div>
+     { 
+                !rowData.pu_signature_image && 
             <Button
                 size='small'
                 color='error'
                 onClick={handleClickOpen}><HighlightOffIcon />
             </Button>
+    }
+       { 
+               !!rowData.pu_signature_image && 
+            <Button
+                size='small'
+                color='primary'
+                onClick={cantDelete}><HighlightOffIcon />
+            </Button>
+    }
       <Dialog
         open={open}
         onClose={handleClose}
