@@ -18,7 +18,7 @@ export default function Table({ orders, setOrder }) {
     const columns = [
         {
             headerName: '',
-            width: 65,
+            width: 61,
             cellRenderer: Delete,
             valueGetter: rowDataGetter
         },
@@ -64,7 +64,7 @@ export default function Table({ orders, setOrder }) {
             valueGetter: rowDataGetter,
             cellRenderer: SignedAtTimeStamp,
             sortable: true,
-            width: 170,
+            width: 160,
             filter: 'agDateColumnFilter',
             filterParams: {
                 // provide comparator function
