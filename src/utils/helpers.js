@@ -51,7 +51,9 @@ export const generateUUID = () => {
     }
     return arr.join("")
 }
-export function SearchByKeyword(array, keyword) {
+
+//search by address (that it includes the keyword, not is equal to). We can also add other fields to search through. 
+export function searchByKeyword(array, keyword) {
     if (keyword) {
       const filteredArray = array.filter(function(item) {
         return item.pu_address.toLowerCase().includes(keyword.toLowerCase())
