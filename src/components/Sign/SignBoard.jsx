@@ -45,7 +45,7 @@ export default function SignBoard({ orders, setOrders, order }) {
         formData.append('signature', signatureBlob);
         console.log(formData.get('signature'));
         try {
-            const res = await dao.signOrder(params.orderId, formData)
+            await dao.signOrder(params.orderId, formData)
             setContent({ isOpen: true, msg: `Order ${selected.uuid} was signed successfully!` });
         } catch (error) {
             console.error(error);
