@@ -19,11 +19,11 @@ export default function Delete(props) {
             try {
                 await dao.deleteOrder(`${rowData.uuid}`);
                 setContent({ isOpen: true, msg: `Order has been deleted!` });
-                handleClose;
+                handleClose();
                 
             } catch (error) {
                 setContent({ isOpen: true, msg: `Can't delete the order, ${error}` });
-                handleClose;
+                handleClose();
             }
         
     }
