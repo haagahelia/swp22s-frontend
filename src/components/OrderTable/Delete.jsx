@@ -59,7 +59,7 @@ export default function Delete(props) {
                !!rowData.pu_signature_image && 
             <Button
                 size='small'
-                color='primary'
+                sx={{ color: 'lightgray', borderColor: 'green' }}
                 onClick={cantDelete}><HighlightOffIcon />
             </Button>
     }
