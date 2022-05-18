@@ -27,8 +27,6 @@ const getStatsByOrderType = async () => {
   return req.data;
 };
 
-
-
 const signOrder = async (orderId, formData) => {
   const res = await axios.put(`${baseUrl}/signature/${orderId}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
@@ -41,11 +39,15 @@ const saveOrder = async (order) => {
   return res;
 };
 
-const deleteOrder = async (orderId) => {
-   const res = await axios.delete(`${baseUrl}/task/${orderId}`);
-   return res;
+const editOrder = async (order, orderId) => {
+  const res = await axios.put(`${baseUrl}/task/${orderId}`, order);
+  return res;
 };
 
+const deleteOrder = async (orderId) => {
+  const res = await axios.delete(`${baseUrl}/task/${orderId}`);
+  return res;
+};
 
 const dao = {
   getOrders,
@@ -57,6 +59,7 @@ const dao = {
 
   signOrder,
   saveOrder,
+  editOrder,
   deleteOrder,
 };
 
