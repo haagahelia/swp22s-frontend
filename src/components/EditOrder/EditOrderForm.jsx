@@ -39,7 +39,7 @@ export default function EditOrderForm({ types, countries, order }) {
     //fetch, handdle response, show success message in a message flash
     //navigate("/")
     try {
-      await dao.editOrder(order.uuid, editedOrder);
+      await dao.editOrder(editedOrder);
       setContent({ isOpen: true, msg: `Order ${order.uuid} has been edited!` });
       navigate("/");
     } catch (error) {

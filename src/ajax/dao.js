@@ -39,8 +39,8 @@ const saveOrder = async (order) => {
   return res;
 };
 
-const editOrder = async (order, orderId) => {
-  const res = await axios.put(`${baseUrl}/task/${orderId}`, order);
+const editOrder = async (order) => {
+  const res = await axios.put(`${baseUrl}/task/${order.uuid}`, order);
   return res;
 };
 

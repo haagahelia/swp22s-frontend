@@ -14,6 +14,7 @@ export default function EditOrder() {
   const [countries, setCountries] = useState([]);
   const { setContent } = usePopup();
   const { order, setOrder } = useOrder();
+  console.log(order);
 
   // Fetching data from db
   const fetchCountries = async () => {

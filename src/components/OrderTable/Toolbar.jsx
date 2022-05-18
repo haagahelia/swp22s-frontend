@@ -20,7 +20,7 @@ export default function Toolbar(props) {
 
   const editOrder = () => {
     navigate(`/edit/${rowData.uuid}`);
-    rowData.setOrder(rowData.uuid);
+    rowData.setOrder(rowData);
   };
 
   return (
