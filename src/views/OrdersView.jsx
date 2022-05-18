@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Typography } from "@mui/material"
 import dao from "../ajax/dao"
-// import {logger} from "../utils/logger"
 
 import { usePopup } from "../contexts/PopupContext"
 import { useOrders } from "../contexts/OrdersContext"
@@ -16,7 +15,7 @@ export default function OrdersView() {
     const { setOrder } = useOrder()
     const { setContent } = usePopup()
 
-    const statsTest = [{order_type:"driving"},{order_type:"cafeteria"}];
+    // const statsTest = [{order_type:"driving"},{order_type:"cafeteria"}];
     
     useEffect(() => {
         fetchOrders();

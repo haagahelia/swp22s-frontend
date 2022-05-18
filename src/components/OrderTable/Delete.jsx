@@ -10,32 +10,24 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Delete(props) {
-
-    const { setContent } = usePopup();
-    const rowData = props.valueFormatted ? props.valueFormatted : props.value
-
-    const deleteRow = async () => {
-
-            try {
-                await dao.deleteOrder(`${rowData.uuid}`);
-                setContent({ isOpen: true, msg: `Order has been deleted!` });
-                handleClose();
-                
-            } catch (error) {
-                setContent({ isOpen: true, msg: `Can't delete the order, ${error}` });
-                handleClose();
-            }
-        
-    }
-
-    const cantDelete = () => {
-
-          setContent({ isOpen: true, msg: `Can't delete signed order` });
-
-      
-  
-}
+  const { setContent } = usePopup();
   const [open, setOpen] = React.useState(false);
+  const rowData = props.valueFormatted ? props.valueFormatted : props.value
+
+  const deleteRow = async () => {
+    try {
+      await dao.deleteOrder(`${rowData.uuid}`);
+      setContent({ isOpen: true, msg: `Order has been deleted!` });
+      handleClose();
+    } catch (error) {
+      setContent({ isOpen: true, msg: `Can't delete the order, ${error}` });
+      handleClose();
+    }
+  }
+
+  const cantDelete = () => {
+    setContent({ isOpen: true, msg: `Can't delete signed order` });
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -47,22 +39,22 @@ export default function Delete(props) {
 
   return (
     <div>
-     { 
-                !rowData.pu_signature_image && 
-            <Button
-                size='small'
-                color='error'
-                onClick={handleClickOpen}><HighlightOffIcon />
-            </Button>
-    }
-       { 
-               !!rowData.pu_signature_image && 
-            <Button
-                size='small'
-                sx={{ color: 'lightgray' }}
-                onClick={cantDelete}><HighlightOffIcon />
-            </Button>
-    }
+      { 
+        !rowData.pu_signed_at && 
+          <Button
+              size='small'
+              color='error'
+              onClick={handleClickOpen}><HighlightOffIcon />
+          </Button>
+      }
+      { 
+        rowData.pu_signed_at && 
+          <Button
+              size='small'
+              sx={{ color: 'lightgray' }}
+              onClick={cantDelete}><HighlightOffIcon />
+          </Button>
+      }
       <Dialog
         open={open}
         onClose={handleClose}

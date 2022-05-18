@@ -25,10 +25,10 @@ export default function Toolbar(props) {
 
   return (
     <div className="order-table-toolbar">
-      <CreateOutlinedIcon onClick={editOrder} color="primary" />
+      <CreateOutlinedIcon onClick={editOrder} color="secondary" />
       <VisibilityIcon onClick={showOrder} color="primary" />
 
-      {!rowData.pu_signature_image && (
+      {!rowData.pu_signed_at && (
         <BorderColorIcon onClick={signOrder} color="warning" />
       )}
     </div>

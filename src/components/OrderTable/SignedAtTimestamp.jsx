@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import moment from "moment-mini"
+import moment from "moment-timezone"
 
 export default function SignedAtTimeStamp(props) {
     const [ timestamps, setTimestamps ] = useState(null)

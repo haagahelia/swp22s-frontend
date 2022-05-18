@@ -40,7 +40,7 @@ const saveOrder = async (order) => {
 };
 
 const editOrder = async (order) => {
-  const res = await axios.put(`${baseUrl}/task/${order.uuid}`, order);
+  const res = await axios.put(`${baseUrl}/task`, order);
   return res;
 };
 
