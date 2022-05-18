@@ -112,6 +112,9 @@ export default function CreateOrderForm({ types, countries }) {
                 <TextField
                     margin="dense"
                     fullWidth
+                    onKeyDown={(event) => {
+                        event.preventDefault();
+                      }}
                     type="datetime-local"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
