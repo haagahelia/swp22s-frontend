@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { base64ToBlob } from "../../utils/helpers";
 import dao from "../../ajax/dao";
 import { Button } from "@mui/material";
+import moment from "moment-timezone";
 
 import { usePopup } from "../../contexts/PopupContext";
 import SignaturePad from 'react-signature-canvas';
@@ -30,7 +31,7 @@ export default function SignBoard({ orders, setOrders, order }) {
         sendToServer(blob, selected);
         setOrders([
             ...orders.slice(0, index),
-            { ...selected, pu_signed_at: now.toISOString(), pu_signature_image: sigPad.current.toDataURL().split(",")[1] },
+            { ...selected, pu_signed_at: moment(new Date(now)).format("YYYY-MM-DD HH:mm"), pu_signature_image: sigPad.current.toDataURL().split(",")[1] },
             ...orders.slice(index + 1)
         ])
         navigate("/")

@@ -13,17 +13,13 @@ export default function EditOrder() {
   const [types, setTypes] = useState([]);
   const [countries, setCountries] = useState([]);
   const { setContent } = usePopup();
-  const { order, setOrder } = useOrder();
-  console.log(order);
+  const { order } = useOrder();
 
   // Fetching data from db
   const fetchCountries = async () => {
     try {
       const data = await dao.getCountry();
-      // console.log("Data: " + data);
-
       setCountries(data);
-      // setContent({ isOpen: true, msg: "Successfully fetched orders" });
     } catch (error) {
       console.log(error);
       setContent({ isOpen: true, msg: `Can't fetch orders, ${error}` });
@@ -33,7 +29,6 @@ export default function EditOrder() {
   const fetchOrderType = async () => {
     try {
       const data = await dao.getTypeOrder();
-      //  console.log("Data: " + data);
       setTypes(data);
       setContent({ isOpen: true, msg: "Successfully fetched types" });
     } catch (error) {

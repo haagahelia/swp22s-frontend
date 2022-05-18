@@ -101,7 +101,7 @@ export default function Table({ orders, setOrders, setOrder }) {
     },
     {
       headerName: "",
-      width: 150,
+      width: 130,
       cellRenderer: Toolbar,
       valueGetter: toolbarDataGetter,
     },
