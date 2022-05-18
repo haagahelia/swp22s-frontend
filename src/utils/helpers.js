@@ -52,6 +52,20 @@ export const generateUUID = () => {
     return arr.join("")
 }
 
+
+//search by address (that it includes the keyword, not is equal to). We can also add other fields to search through. 
+export function searchByKeyword(array, keyword) {
+    if (keyword) {
+      const filteredArray = array.filter(function(item) {
+        return item.pu_address.toLowerCase().includes(keyword.toLowerCase())
+      })
+      return filteredArray
+    } else {
+      return array
+    }
+
+}
+
 export const dateComparator = (row1, row2) => {
     const date1 = new Date(row1.pu_planned_time)
     const date2 = new Date(row2.pu_planned_time)
@@ -64,3 +78,4 @@ export const dateComparator = (row1, row2) => {
 
     return date1 - date2
 }
+
