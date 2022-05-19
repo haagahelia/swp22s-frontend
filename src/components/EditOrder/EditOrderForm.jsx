@@ -24,7 +24,7 @@ export default function EditOrderForm({ types, countries, order }) {
   const [type, setType] = useState("");
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState();
 
   useEffect(() => {
     setType(order?.order_type)
@@ -40,13 +40,12 @@ export default function EditOrderForm({ types, countries, order }) {
       order_type: type,
       pu_address: address,
       country_code: country,
-      pu_signed_at: moment(order.pu_signed_at).tz("GMT0").format("YYYY-MM-DD HH:mm")
+      pu_signed_at: order.pu_signed_at ? moment(order.pu_signed_at).tz("GMT0").format("YYYY-MM-DD HH:mm") : null
     };
 
     //fetch, handdle response, show success message in a message flash
     //navigate("/")
     try {
-      console.log(order.pu_signed_at)
       await dao.editOrder(editedOrder);
       const index = orders.findIndex(x => x.uuid === editedOrder.uuid)
       setOrders([
@@ -54,7 +53,7 @@ export default function EditOrderForm({ types, countries, order }) {
         { 
           ...editedOrder, 
           pu_planned_time: moment(date).tz("Etc/GMT-6").format("YYYY-MM-DD HH:mm"),
-          pu_signed_at: moment(order.pu_signed_at).tz("Etc/GMT-3").format("YYYY-MM-DD HH:mm"),
+          pu_signed_at: order.pu_signed_at ? moment(order.pu_signed_at).tz("Etc/GMT-3").format("YYYY-MM-DD HH:mm") : null,
         },
         ...orders.slice(index + 1)
       ])
@@ -124,6 +123,7 @@ export default function EditOrderForm({ types, countries, order }) {
         )}
 
         <FormLabel>Date of pick up</FormLabel>
+        <br/>
         <DateTimePicker
           renderInput={(props) => <TextField {...props} />}
           label="DateTimePicker"
