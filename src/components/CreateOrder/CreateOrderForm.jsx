@@ -11,13 +11,16 @@ import {
 } from "@mui/material";
 import { TextField } from "@mui/material";
 import dao from "../../ajax/dao";
+import moment from "moment-timezone";
 
 import { usePopup } from "../../contexts/PopupContext";
+import { useOrders } from "../../contexts/OrdersContext";
 import { generateUUID } from "../../utils/helpers"
 
 export default function CreateOrderForm({ types, countries }) {
     const navigate = useNavigate()
     const { setContent } = usePopup();
+    const { orders, setOrders } = useOrders()
     const [uuid, setUUID] = useState("");
     const [type, setType] = useState("");
     const [country, setCountry] = useState("");
@@ -32,7 +35,7 @@ export default function CreateOrderForm({ types, countries }) {
     const submitTask = async () => {
         const newOrder = {
             uuid: uuid,
-            pu_planned_time: date.slice(0, 19).replace("T", " "),
+            pu_planned_time: moment(date).format("YYYY-MM-DD HH:mm"),
             order_type: type,
             pu_address: address,
             country_code: country,
@@ -43,6 +46,7 @@ export default function CreateOrderForm({ types, countries }) {
         //navigate("/")
         try {
             await dao.saveOrder(newOrder);
+            setOrders([ ...orders, {...newOrder, pu_planned_time: moment(newOrder.pu_planned_time).tz("Etc/GMT-6").format("YYYY-MM-DD HH:mm")} ])
             setContent({ isOpen: true, msg: `Order ${uuid} has been created!` });
             navigate("/");
         } catch (error) {

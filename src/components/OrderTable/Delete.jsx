@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Button from '@mui/material/Button';
 import dao from "../../ajax/dao";
 import { usePopup } from "../../contexts/PopupContext";
+import { useOrders } from '../../contexts/OrdersContext';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -11,15 +12,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Delete(props) {
   const { setContent } = usePopup();
-  const [open, setOpen] = React.useState(false);
+  const { orders, setOrders } = useOrders();
+  const [open, setOpen] = useState(false);
   const rowData = props.valueFormatted ? props.valueFormatted : props.value
 
   const deleteRow = async () => {
     try {
       await dao.deleteOrder(`${rowData.uuid}`);
+      setOrders(orders.filter(o => o.uuid !== rowData.uuid))
       setContent({ isOpen: true, msg: `Order has been deleted!` });
       handleClose();
     } catch (error) {
+      console.log(error)
       setContent({ isOpen: true, msg: `Can't delete the order, ${error}` });
       handleClose();
     }

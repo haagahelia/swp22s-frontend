@@ -32,7 +32,7 @@ export default function CreateNewOrder() {
       const data = await dao.getTypeOrder();
       //  console.log("Data: " + data);
       setTypes(data);
-      setContent({ isOpen: true, msg: "Successfully fetched types" });
+      // setContent({ isOpen: true, msg: "Successfully fetched types" });
     } catch (error) {
       console.log(error);
       setContent({ isOpen: true, msg: `Can't fetch types, ${error}` });

@@ -113,6 +113,7 @@ export default function Table({ orders, setOrders, setOrder }) {
     <div className="ag-theme-alpine" style={{ height: 450, width: 1080 }}>
       <AgGridReact
         rowData={rowData.length === 0 ? orders : rowData}
+        // rowData={orders}
         columnDefs={columns}
         pagination={true}
         paginationPageSize={10}
