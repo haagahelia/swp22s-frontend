@@ -48,7 +48,7 @@ export default function CreateOrderForm({ types, countries }) {
             await dao.saveOrder(newOrder);
             setOrders([ ...orders, {...newOrder, pu_planned_time: moment(newOrder.pu_planned_time).tz("Etc/GMT-6").format("YYYY-MM-DD HH:mm")} ])
             setContent({ isOpen: true, msg: `Order ${uuid} has been created!` });
-            navigate("/");
+            navigate("/orders");
         } catch (error) {
             setContent({ isOpen: true, msg: `Can't create the order, ${error}` });
         }

@@ -10,12 +10,14 @@ import SignView from "../views/SignView";
 import CreateNewOrderView from "../views/CreateNewOrderView";
 import UnsignedTimelimitView from "../views/UnsignedTimelimitView";
 import EditOrderView from "../views/EditOrderView";
+import Home from "../components/Home/HomeComponent";
 
 export default function AppRoutes() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<OrdersView />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/orders" element={<OrdersView />} />
         <Route path="/order/:orderId" element={<OrderView />} />
         <Route path="/edit/:orderId" element={<EditOrderView />} />
         <Route path="/unsigned" element={<UnsignedOrdersView />} />
