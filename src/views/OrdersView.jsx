@@ -7,6 +7,7 @@ import { useOrders } from "../contexts/OrdersContext"
 import { useOrder } from "../contexts/OrderContext"
 import Container from "../components/CommonComponents/Container"
 import OrderTable from "../components/OrderTable/Table"
+import Home from "../components/Home/HomeComponent"
 //import { elementAcceptingRef } from "@mui/utils"
 
 export default function OrdersView() {
@@ -68,8 +69,7 @@ export default function OrdersView() {
                     <li key={element.order_type}>{element.order_type}</li>    
                 )}
             </ul>
-            */}
-                        
+            */}            
         </Container>        
     )
 }

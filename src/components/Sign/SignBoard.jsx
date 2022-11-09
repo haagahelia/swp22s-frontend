@@ -34,7 +34,7 @@ export default function SignBoard({ orders, setOrders, order }) {
             { ...selected, pu_signed_at: moment(new Date(now)).format("YYYY-MM-DD HH:mm"), pu_signature_image: sigPad.current.toDataURL().split(",")[1] },
             ...orders.slice(index + 1)
         ])
-        navigate("/")
+        navigate("/orders")
     };
 
     //Function to send blob to server

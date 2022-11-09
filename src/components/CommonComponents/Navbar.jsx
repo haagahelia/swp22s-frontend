@@ -16,6 +16,7 @@ export default function Navbar() {
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginTop: 1.2, justifyContent: "center" }}>
                     <nav>
                         <Button onClick={() => navigate("/")}>Home</Button>
+                        <Button onClick={() => navigate("/orders")}>Orders</Button>
                         <Button onClick={() => navigate("/unsigned")}>Unsigned Orders</Button>
                         <Button onClick={() => navigate("/unsignedtimelimit")}>Timed out Orders</Button>
                         <Button onClick={() => navigate("/signatures")}>Signatures</Button>

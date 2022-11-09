@@ -58,7 +58,7 @@ export default function EditOrderForm({ types, countries, order }) {
         ...orders.slice(index + 1)
       ])
       setContent({ isOpen: true, msg: `Order ${order.uuid} has been edited!` });
-      navigate("/");
+      navigate("/orders");
     } catch (error) {
       setContent({ isOpen: true, msg: `Can't edit the order, ${error}` });
     }
