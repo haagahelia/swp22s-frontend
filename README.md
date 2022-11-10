@@ -15,7 +15,11 @@ people are turning back to npm?)
 
 The *real IP address* and the *TCP port of the backend* (if using the running backend in cloud) are found in Teams > DevOps, Linux > Files > .xlsx
 
-4. npm start
+4. Connect backend to database by running the fellowing script:
+
+    ssh -f "user_name"@"database_ip" -L 3307:localhost:3306 -N
+
+5. npm start
 
 ## Available Scripts
 
