@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "result": {
+    "fileName": "google-config.js",
+    "fileContents": "// Copy and paste this into your JavaScript code to initialize the Firebase SDK.\n// You will also need to load the Firebase SDK.\n// See https://firebase.google.com/docs/web/setup for more details.\n\nfirebase.initializeApp({\n  \"projectId\": \"omakpi\",\n  \"appId\": \"1:714283749999:web:ac22c3951f21dc050ab39a\",\n  \"storageBucket\": \"omakpi.appspot.com\",\n  \"apiKey\": \"AIzaSyBRouWFpoY2_3UTlFFpYG4jBp7QiHLoBak\",\n  \"authDomain\": \"omakpi.firebaseapp.com\",\n  \"messagingSenderId\": \"714283749999\",\n  \"measurementId\": \"G-WYPQZ469FL\"\n});\n",
+    "sdkConfig": {
+      "projectId": "omakpi",
+      "appId": "1:714283749999:web:ac22c3951f21dc050ab39a",
+      "storageBucket": "omakpi.appspot.com",
+      "apiKey": "AIzaSyBRouWFpoY2_3UTlFFpYG4jBp7QiHLoBak",
+      "authDomain": "omakpi.firebaseapp.com",
+      "messagingSenderId": "714283749999",
+      "measurementId": "G-WYPQZ469FL"
+    }
+  }
+}
