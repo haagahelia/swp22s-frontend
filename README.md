@@ -1,4 +1,4 @@
-# Frontend project 
+# Frontend project
 
 (This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)
 
@@ -7,17 +7,18 @@ it's easier. (To my knowledge yarn also did not surpass npm in popularity and
 people are turning back to npm?)
 
 ## Installation steps
+
 0. (If you have an old installation, remove it, or remove at least node_modules and package-lock.json/yarn.lock etc.)
 1. git clone / git pull
-1. npm install
-1. create an '.env.local' file to the root of the project folder. In the file add just one line: (replace the two placeholders with real data)
-> REACT_APP_BE_SERVER_BASE_URL=http://real_ip_for_backend_here:backend_port_here/api
+2. npm install
+3. create an '.env.local' file to the root of the project folder. In the file add just one line: (replace the two placeholders with real data)
+   > REACT_APP_BE_SERVER_BASE_URL=http://real_ip_for_backend_here:backend_port_here/api
 
-The *real IP address* and the *TCP port of the backend* (if using the running backend in cloud) are found in Teams > DevOps, Linux > Files > .xlsx
+The _real IP address_ and the _TCP port of the backend_ (if using the running backend in cloud) are found in Teams > DevOps, Linux > Files > .xlsx
 
 4. Connect backend to database by running the fellowing script:
 
-    ssh -f "user_name"@"database_ip" -L 3307:localhost:3306 -N
+   ssh -f "user_name"@"database_ip" -L 3307:localhost:3306 -N
 
 5. npm start
 
