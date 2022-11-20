@@ -11,11 +11,17 @@ import CreateNewOrderView from "../views/CreateNewOrderView";
 import UnsignedTimelimitView from "../views/UnsignedTimelimitView";
 import EditOrderView from "../views/EditOrderView";
 import HomeView from "../views/HomeView";
+import { ProtectedRoute } from './PrivateRoute'
+import { LogIn } from "../components/LogIn/LogIn";
 
 export default function AppRoutes() {
   return (
     <Router>
       <Routes>
+      <Route path="/login" element={<LogIn/>} />
+
+      <Route element={
+        <ProtectedRoute redirectPath="/login" /*isAllowed={?}*/ />}>
         <Route path="/" element={<HomeView />} />
         <Route path="/orders" element={<OrdersView />} />
         <Route path="/order/:orderId" element={<OrderView />} />
@@ -26,6 +32,7 @@ export default function AppRoutes() {
         <Route path="/signatures/:id" element={<SignatureView />} />
         <Route path="/sign/:orderId" element={<SignView />} />
         <Route path="/new" element={<CreateNewOrderView />} />
+        </Route>
       </Routes>
     </Router>
   );
