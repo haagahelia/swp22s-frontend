@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import OrdersView from "../views/OrdersView";
 import OrderView from "../views/OrderView";
@@ -19,6 +19,7 @@ export default function AppRoutes() {
     <Router>
       <Routes>
       <Route path="/login" element={<LogIn/>} />
+      <Route path="/home" element={<Navigate to="/" />} />
 
       <Route element={
         <ProtectedRoute redirectPath="/login" /*isAllowed={?}*/ />}>

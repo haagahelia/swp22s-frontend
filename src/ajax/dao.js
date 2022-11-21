@@ -49,6 +49,11 @@ const deleteOrder = async (orderId) => {
   return res;
 };
 
+const logIn = async (user) => {
+  const res = await axios.post(`${baseUrl}/`, user);
+  return res;
+};
+
 const dao = {
   getOrders,
   getCountry,
