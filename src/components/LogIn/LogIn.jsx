@@ -3,22 +3,34 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Typography } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
-
+import { useNavigate } from "react-router-dom";
+import dao from '../../ajax/dao';
+import jwtDecode from 'jwt-decode'
 
 export function LogIn() {
-
+  const navigate = useNavigate();
+  
   const[user, setUser]=React.useState({
       email:'',
-      password:''
+      pword:''
   });
 
-  const handleSave= async (user) => {
-          //dao manage Login
-      
-      setUser({
-          email:'',
-          password:'',
-      })
+  const handleSave= async () => {
+
+      try{
+      const res= await dao.logIn(user);
+      const token =res.data.token;
+      const decodedUser = jwtDecode(token);
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(decodedUser));
+
+      //navigate("/orders");
+    }
+    catch{}
+    setUser({
+      email:'',
+      pword:'',
+  })
   }
 
   const inputChanged=(event)=>{
@@ -48,11 +60,11 @@ export function LogIn() {
         />
         <TextField
           margin="dense"
-          name='password'
+          name='pword'
           type="password"
-          value={user.password}
+          value={user.pword}
           onChange={inputChanged}
-          label="password"
+          label="Password"
           fullWidth
           variant="standard"
         />

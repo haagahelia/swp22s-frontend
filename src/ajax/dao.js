@@ -50,7 +50,7 @@ const deleteOrder = async (orderId) => {
 };
 
 const logIn = async (user) => {
-  const res = await axios.post(`${baseUrl}/`, user);
+  const res = await axios.post(`${baseUrl}/login`, user);
   return res;
 };
 
@@ -66,6 +66,8 @@ const dao = {
   saveOrder,
   editOrder,
   deleteOrder,
+
+  logIn,
 };
 
 export default dao;

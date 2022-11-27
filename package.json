@@ -17,6 +17,7 @@
     "ag-grid-react": "^27.2.1",
     "axios": "^0.26.1",
     "install": "^0.13.0",
+    "jwt-decode": "^3.1.2",
     "moment": "^2.29.3",
     "moment-mini": "^2.24.0",
     "moment-timezone": "^0.5.34",

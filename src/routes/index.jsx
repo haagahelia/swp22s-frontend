@@ -15,6 +15,9 @@ import { ProtectedRoute } from './PrivateRoute'
 import { LogIn } from "../components/LogIn/LogIn";
 
 export default function AppRoutes() {
+
+  const user = localStorage.getItem('user');
+  
   return (
     <Router>
       <Routes>
@@ -22,7 +25,7 @@ export default function AppRoutes() {
       <Route path="/home" element={<Navigate to="/" />} />
 
       <Route element={
-        <ProtectedRoute redirectPath="/login" /*isAllowed={?}*/ />}>
+        <ProtectedRoute redirectPath="/login" isAllowed={user} />}>
         <Route path="/" element={<HomeView />} />
         <Route path="/orders" element={<OrdersView />} />
         <Route path="/order/:orderId" element={<OrderView />} />
