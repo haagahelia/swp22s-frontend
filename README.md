@@ -14,6 +14,7 @@ people are turning back to npm?)
 3. create an '.env.local' file to the root of the project folder. In the file add just one line: (replace the two placeholders with real data)
    > REACT_APP_BE_SERVER_BASE_URL=http://real_ip_for_backend_here:backend_port_here/api
 
+In this case: REACT_APP_BE_SERVER_BASE_URL=http://localhost:8777/api
 The _real IP address_ and the _TCP port of the backend_ (if using the running backend in cloud) are found in Teams > DevOps, Linux > Files > .xlsx
 
 4. Please make sure backend has connected to database and running. See the backend docs link: https://github.com/haagahelia/swp22s-backend
