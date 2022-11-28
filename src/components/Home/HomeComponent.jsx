@@ -10,6 +10,7 @@ function Home() {
     return (
         <div>
             <div>Hello {user.firstName} !</div>
+            <div>You are {user.role}</div>
             <h1></h1>
             <Button variant="contained" endIcon ={<LogoutIcon />}
                     onClick={() =>{
