@@ -14,7 +14,7 @@ import Popup from "./components/CommonComponents/Popup"
 
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterMoment}>
+  <LocalizationProvider dateAdapter={AdapterMoment}>
     <PopupProvider>
       <OrdersProvider>
         <OrderProvider>
@@ -25,7 +25,7 @@ function App() {
         </OrderProvider>
       </OrdersProvider>
     </PopupProvider>
-    </LocalizationProvider>
+  </LocalizationProvider>
   );
 }
 
