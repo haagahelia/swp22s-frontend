@@ -18,8 +18,6 @@ The _real IP address_ and the _TCP port of the backend_ (if using the running ba
 
 4. Please make sure backend has connected to database and running. See the backend docs link: https://github.com/haagahelia/swp22s-backend
 
-This is a test! this is a test 2
-
 5. npm start
 
 ## Available Scripts
