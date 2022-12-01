@@ -17,12 +17,8 @@ export function LogIn() {
 
   const handleSave= async () => {
 
-
-    try {
-      console.log("test");
-      const res = await dao.logIn(user);
-      console.log("test");
-      console.log(res);
+    try{
+    const res= await dao.logIn(user);
     const token =res.data.token;
     const decodedUser = jwtDecode(token);
     localStorage.setItem('token', token);
