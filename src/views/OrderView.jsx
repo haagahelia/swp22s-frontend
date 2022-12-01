@@ -17,7 +17,7 @@ export default function OrderView() {
 
   return (
     <div className="order">
-      <Button variant="outlined" onClick={() => navigate("/")}>
+      <Button variant="outlined" onClick={() => navigate("/orders")}>
         Go Back
       </Button>
 

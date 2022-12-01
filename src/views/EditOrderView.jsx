@@ -45,7 +45,7 @@ export default function EditOrder() {
 
   return (
     <div className="order">
-      <Button variant="outlined" onClick={() => navigate("/")}>
+      <Button variant="outlined" onClick={() => navigate("/orders")}>
         Cancel
       </Button>
 
