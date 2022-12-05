@@ -52,6 +52,12 @@ export default function Table({ orders, setOrders, setOrder }) {
       filter: "agTextColumnFilter",
       width: 100,
     },
+     {
+      headerName: "Courier id",
+      field: "courier",
+      sortable: true,
+      width: 100,
+    },
     {
       headerName: "Pick-up Address",
       field: "pu_address",
