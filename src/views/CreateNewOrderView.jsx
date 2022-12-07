@@ -11,6 +11,7 @@ export default function CreateNewOrder() {
 
   const [types, setTypes] = useState([]);
   const [countries, setCountries] = useState([]);
+  const [couriers, setCouriers] = useState([]);
   const { setContent } = usePopup();
 
   // Fetching data from db
@@ -39,9 +40,22 @@ export default function CreateNewOrder() {
     }
   };
 
+  const fetchCouriers = async () => {
+    try {
+      const data = await dao.getCouriers();
+      //  console.log("Data: " + data);
+      setCouriers(data);
+      // setContent({ isOpen: true, msg: "Successfully fetched types" });
+    } catch (error) {
+      console.log(error);
+      setContent({ isOpen: true, msg: `Can't fetch types, ${error}` });
+    }
+  };
+
   useEffect(() => {
     fetchCountries();
     fetchOrderType();
+    fetchCouriers();
   // eslint-disable-next-line
   }, []); //has tried to use callback + set dependencies to solve the warning here but it slows down the app significantly
 
@@ -51,7 +65,7 @@ export default function CreateNewOrder() {
         Cancel
       </Button>
       
-      <CreateOrderForm types={types} countries={countries} />
+      <CreateOrderForm types={types} countries={countries} couriers={couriers} />
     </div>
   );
 }

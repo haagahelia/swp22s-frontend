@@ -17,7 +17,7 @@ import { usePopup } from "../../contexts/PopupContext";
 import { useOrders } from "../../contexts/OrdersContext";
 import { generateUUID } from "../../utils/helpers"
 
-export default function CreateOrderForm({ types, countries }) {
+export default function CreateOrderForm({ types, countries, couriers }) {
     const navigate = useNavigate()
     const { setContent } = usePopup();
     const { orders, setOrders } = useOrders()
@@ -25,12 +25,14 @@ export default function CreateOrderForm({ types, countries }) {
     const [type, setType] = useState("");
     const [country, setCountry] = useState("");
     const [address, setAddress] = useState("");
+    const [courier, setCourier] = useState("");
     const [date, setDate] = useState("");
 
     useEffect(() => {
         const uuid = generateUUID()
         setUUID(uuid)
     }, [])
+
 
     const submitTask = async () => {
         const newOrder = {
@@ -39,7 +41,9 @@ export default function CreateOrderForm({ types, countries }) {
             order_type: type,
             pu_address: address,
             country_code: country,
+            courier: courier,
         };
+
     
         console.log(newOrder);
         //fetch, handdle response, show success message in a message flash
@@ -123,8 +127,27 @@ export default function CreateOrderForm({ types, countries }) {
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                 />
-            </CardContent>
+            
+            <FormLabel>Select Courier</FormLabel>
+                {couriers?.length > 0 && (
+                    <Select
+                        defaultValue={couriers[0].userId}
+                        margin="dense"
+                        fullWidth
+                        label="Courier"
+                        value={courier}
+                        onChange={(e) => setCourier(e.target.value)}
+                    >
+                    {couriers?.map((x) => (
+                        <MenuItem key={x.userId} value={x.userId}>
+                            {x.email} - {x.firstName} {x.lastName}
+                        </MenuItem>
+                    ))}
+                    </Select>
+                )}
 
+            </CardContent>
+            
             <CardActions>
                 <Button variant="outlined" size="small" onClick={submitTask}>
                     Create an order
