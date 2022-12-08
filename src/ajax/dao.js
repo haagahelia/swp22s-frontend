@@ -65,10 +65,29 @@ const logIn = async (user) => {
   return res;
 };
 
+const profilePendingOrders = async () => {
+  const req = await axios.get(`${baseUrl}/profile/pending`, 
+  {headers:{Authorization: `Bearer ${token}`}});
+  return req.data;
+};
+
+const profileHistoricOrders = async () => {
+  const req = await axios.get(`${baseUrl}/profile/historic`, 
+  {headers:{Authorization: `Bearer ${token}`}});
+  return req.data;
+};
+
+const getCouriers = async () => {
+  const req = await axios.get(`${baseUrl}/user/couriers/all`, 
+  {headers:{Authorization: `Bearer ${token}`}});
+  return req.data;
+};
+
 const dao = {
   getOrders,
   getCountry,
   getTypeOrder,
+  getCouriers,
 
   getUnsignedOrders,
   getStatsByOrderType,
@@ -79,6 +98,8 @@ const dao = {
   deleteOrder,
 
   logIn,
+  profilePendingOrders,
+  profileHistoricOrders
 };
 
 export default dao;
