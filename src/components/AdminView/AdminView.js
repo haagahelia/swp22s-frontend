@@ -6,6 +6,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
+import './AdminView.css'
 
 const bull = (
     <Box
@@ -17,28 +19,79 @@ const bull = (
 );
 
 const AdminView = () => {
+    const navigate = useNavigate();
     return (
-        <Card sx={{ minWidth: 275 }}>
-            <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    Word of the Day
-                </Typography>
-                <Typography variant="h5" component="div">
-                    be{bull}nev{bull}o{bull}lent
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    adjective
-                </Typography>
-                <Typography variant="body2">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
-        </Card>
+        <div className='AdminView'>
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography variant="h5" component="div">
+                        Total orders:
+                    </Typography>
+                    <Typography variant="body2">
+                        data from orders table
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button onClick={() => navigate("/orders")}>Orders</Button>
+                </CardActions>
+            </Card>
+
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography variant="h5" component="div">
+                        Total unsigned orders:
+                    </Typography>
+                    <Typography variant="body2">
+                        data from unsigned  orders table
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button onClick={() => navigate("/unsigned")}>Unsigned orders</Button>
+                </CardActions>
+            </Card>
+
+
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography variant="h5" component="div">
+                        Total time out orders:
+                    </Typography>
+                    <Typography variant="body2">
+                        data from time out orders table
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button onClick={() => navigate("/unsignedtimelimit")}>time out orders</Button>
+                </CardActions>
+            </Card>
+
+
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography variant="h5" component="div">
+                        Total signatures:
+                    </Typography>
+                    <Typography variant="body2">
+                        data from signatures table
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button onClick={() => navigate("/signatures")}>signatures</Button>
+                </CardActions>
+            </Card>
+
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography variant="h5" component="div">
+                        Create a new order
+                    </Typography>
+
+                </CardContent>
+                <CardActions>
+                    <Button onClick={() => navigate("/new")}>Create new order</Button>
+                </CardActions>
+            </Card>
+        </div>
     )
 }
 
