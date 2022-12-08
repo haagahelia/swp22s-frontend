@@ -13,6 +13,11 @@ function Home() {
     <div>
       <div>Hello {user.firstName} !</div>
       <div>You are {user.role}</div>
+      {user.role === "admin" || user.role === "taskplanner" ? (
+        <AdminView />
+      ) : (
+        <CarrierView />
+      )}
     </div>
   );
 }
