@@ -7,6 +7,17 @@ export default function Navbar() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
 
+  const time = new Date();
+
+  function getCurrentTime() {
+
+    const hours = time.getHours();
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+
+    return `Current time is: ${hours}:${minutes}:${seconds}`;
+  };
+
   return (
     <AppBar position="static" style={{ background: "white", height: 55 }}>
       <Container maxWidth="xl">
